@@ -80,8 +80,8 @@ def lvl_up():
 root = Tk()
 root.title('Bay&Sell (B&S)')
 root.geometry('800x200+600+300')
-root.resizable(True,True)
-root.iconbitmap ('icon.ico')
+root.resizable(True, True)
+root.iconbitmap('icon.ico')
 root.configure(bg='black')
 
 
@@ -112,7 +112,7 @@ button_lvl_ap = Button(root, fg='green', bg='black', height='3', width='14', tex
 
 
 
-#ВИЗУАЛИЗАЦИЯ
+#VISUALIZATION
 
 day.grid(row=1, column=0)
 _day.grid(row=1, column=1)
