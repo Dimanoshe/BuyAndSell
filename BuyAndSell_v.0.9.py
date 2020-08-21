@@ -13,22 +13,23 @@ def button():
     komis = randint(10, 100)
     _dolar_buy['text'] += uniform(-1, 1)
     if _dolar_buy['text'] < 50:
-        _dolar_buy['text'] += uniform(-1, 4)
+        _dolar_buy['text'] += uniform(-1, 3)
     elif _dolar_buy['text'] > 80:
-        _dolar_buy['text'] += uniform(-4, 1)
+        _dolar_buy['text'] += uniform(-3, 1)
 
 
     _dolar_buy['text'] = round(_dolar_buy['text'], 2)
 
-    _dolar_sell['text'] = round(_dolar_buy['text'] -  _dolar_buy['text'] / komis, 2)
+    _dolar_sell['text'] = round(_dolar_buy['text'] - _dolar_buy['text'] / komis, 2)
     prib['text'] = 'Прибыль за день: '+str(pribil)
+    #fram.info['text'] = 'Туые'
 
 def buy():
     def buy_1():
         summ = shkala.get()
         _money['text'] -= summ * _dolar_buy['text']
-        _money['text'] = round(_money['text'], 2)
         _moneyS['text'] += summ
+        _money['text'] = round(_money['text'], 2)
         win_b.withdraw()
 
     win_b = Toplevel(root)
@@ -79,7 +80,7 @@ def lvl_up():
 
 root = Tk()
 root.title('Bay&Sell (B&S)')
-root.geometry('800x200+600+300')
+root.geometry('900x400+600+300')
 root.resizable(True, True)
 root.iconbitmap('icon.ico')
 root.configure(bg='black')
@@ -102,15 +103,19 @@ _dolar_buy = Label(root, fg='green', bg='black', font='Times 20',  text=60)
 dolar_sell = Label(root, fg='green', bg='black', font='Times 20',  text='продажа $ ')
 _dolar_sell = Label(root, fg='green', bg='black', font='Times 20',  text=63)
 
-prib = Label(root, fg='green', bg='black', font='Times 15', text=0)
+prib = Label(root, fg='green', bg='black', font='Times 15', text='Прибыль за день: 0')
 
 
-button_next_day = Button(root, fg='green', bg='black', height='3', width='14', text='Следующий день ', command=button)
-button_buy = Button(root, fg='green', bg='black', height='3', width='8', text='Купить $', command=buy)
-button_sell = Button(root, fg='green', bg='black', height='3', width='8', text='Продать $', command=sell)
-button_lvl_ap = Button(root, fg='green', bg='black', height='3', width='14', text='Поднять уровень', command=lvl_up)
-
-
+button_next_day = Button(root, fg='green', bg='black', height='3', width='14', text='Следующий день ', relief=RIDGE,
+                         bd=5, activebackground='#006400', command=button)
+button_buy = Button(root, fg='green', bg='black', height='3', width='8', text='Купить $', activebackground='#006400',
+                    relief=RIDGE, command=buy)
+button_sell = Button(root, fg='green', bg='black', height='3', width='8', text='Продать $', activebackground='#006400',
+                     relief=RIDGE, command=sell)
+button_lvl_ap = Button(root, fg='green', bg='black', height='3', width='14', text='Поднять уровень', activebackground='#006400',
+                       relief=RIDGE, command=lvl_up)
+#fram = LabelFrame(height='100', width='300')
+#info = Label(fram, fg='green', bg='black', height='10', width='30', text="Новое сообщение").pack()
 
 #VISUALIZATION
 
@@ -133,7 +138,8 @@ button_buy.grid(row=2, column=1)
 button_sell.grid(row=2, column=2)
 button_lvl_ap.grid(row=2, column=3)
 
-prib.grid(row=5, column=1, columnspan=5)
+prib.grid(row=6, column=0, columnspan=1)
+#fram.grid(row=3, column=1, columnspan=6, rowspan=5)
 #-----------------------------------
 
 root.mainloop()
